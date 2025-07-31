@@ -43,7 +43,7 @@
         <div class="bg-[#22245f] py-4 px-6">
             <h1 class="text-2xl font-bold text-white text-center flex items-center justify-center">
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#d15b1b] to-[#c93c48]">1x bet Crash </span>
-                <span class="text-white"> Pridictor</span>
+                <span class="text-white"> Predictor</span>
             </h1>
         </div>
         
@@ -158,12 +158,26 @@
         document.getElementById('userId').disabled = true;
         promoUsed.disabled = true;
         depositMade.disabled = true;
-        
-        // Simulate processing (2 seconds) then redirect
+
+        // Simulate processing in 3 phases of 2 seconds each
         setTimeout(() => {
-            document.getElementById('processingIndicator').classList.add('hidden');
-            window.location.href = 'result.html'; // Change to your desired page
-        }, 3000);
+            // Phase 1 complete
+            document.getElementById('processingIndicator').querySelector('p').innerText = "verifying...";
+        }, 2000);
+
+        setTimeout(() => {
+            // Phase 2 complete
+            document.getElementById('processingIndicator').querySelector('p').innerText = "connecting to 1x bet...";
+        }, 4000);
+
+        setTimeout(() => {
+            // Phase 3 complete, redirect
+            document.getElementById('processingIndicator').querySelector('p').innerText = "connecting to crash...";
+            setTimeout(() => {
+                document.getElementById('processingIndicator').classList.add('hidden');
+                window.location.href = 'result.html'; // Change to your desired page
+            }, 2000); // Wait for 2 seconds before redirecting
+        }, 6000);
     });
     </script>
 </body>
